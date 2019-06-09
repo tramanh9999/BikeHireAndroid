@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">bkv2</string>
+    <string name="shr_filter_title">Filter</string>
+    <string name="shr_search_title">Search</string>
+    <string name="hint_name">Name</string>
+    <string name="hint_pass">Password</string>
+    <string name="button_next">Next</string>
+    <string name="button_cancel">Cancel</string>
+    <string name="error_password">Password must be more than 8 characters</string>
+
+    <string name="three">3D</string>
+    <string name="acc">Accessibility</string>
+    <string name="menu">Bottom menu</string>
+    <string name="search">Search</string>
+    <string name="drawopen">Open</string>
+    <string name="drawclose">Close</string>
+
+</resources>

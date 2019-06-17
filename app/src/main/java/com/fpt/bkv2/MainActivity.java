@@ -15,7 +15,8 @@ public class MainActivity extends AppCompatActivity implements NavigationHost{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         if( savedInstanceState ==null){
-            getSupportFragmentManager().beginTransaction().add(R.id.container, new LoginFragment()).commit();
+//            getSupportFragmentManager().beginTransaction().add(R.id.container, new LoginFragment()).commit();
+            startActivity(new Intent(this, ListBikeActivity.class));
         }
 
     }

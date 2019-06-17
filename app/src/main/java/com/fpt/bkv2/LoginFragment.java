@@ -1,6 +1,7 @@
 package com.fpt.bkv2;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.view.KeyEvent;
@@ -55,7 +56,9 @@ class LoginFragment extends Fragment{
                     if (currentFocusedView != null) {
                         inputManager.hideSoftInputFromWindow(currentFocusedView.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
                     }
-                    ((NavigationHost)getActivity()).navigateTo(new Left_NavigationFragment(),true);
+//                    ((NavigationHost)getActivity()).navigateTo(new Left_NavigationFragment(),true);
+
+
                 }
             }
         });

@@ -1,88 +1,86 @@
 package com.fpt.bkv2;
 
-import android.content.Context;
+import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapRegionDecoder;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.fpt.model.Bike;
 
+import org.w3c.dom.Text;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 
 
-public class BikeAdapter extends RecyclerView.Adapter<BikeAdapter.ViewHolder> {
+public class BikeAdapter extends RecyclerView.Adapter<BikeAdapter.MyViewHolder> {
+    List<Bike> bikeList;
 
-    private List<Bike> mItems;
-    private Context mContext;
-    private PostItemListener mItemListener;
-
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-
-        public TextView titleTv;
-        PostItemListener mItemListener;
-
-        public ViewHolder(View itemView, PostItemListener postItemListener) {
-            super(itemView);
-            titleTv = (TextView) itemView.findViewById(android.R.id.text1);
-
-            this.mItemListener = postItemListener;
-            itemView.setOnClickListener(this);
-        }
-
-        @Override
-        public void onClick(View view) {
-            Bike item = getItem(getAdapterPosition());
-            this.mItemListener.onPostClick(item.getBikeId());
-            notifyDataSetChanged();
-        }
+    public BikeAdapter(List<Bike> bikeList) {
+        this.bikeList = bikeList;
     }
 
-    public BikeAdapter(Context context, List<Bike> posts, PostItemListener itemListener) {
-        mItems = posts;
-        mContext = context;
-        mItemListener = itemListener;
+
+    //create new textview
+    @NonNull
+    @Override
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
+        RelativeLayout v = (RelativeLayout) LayoutInflater.from(parent.getContext()).inflate(R.layout.bike_item_searched, parent, false);
+        MyViewHolder vh = new MyViewHolder(v);
+        return vh;
     }
 
     @Override
-    public BikeAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
-        Context context = parent.getContext();
-        LayoutInflater inflater = LayoutInflater.from(context);
+        Bike bk=bikeList.get(position);
+        holder.t1.setText(bk.getName());
+       holder.t2.setText(bk.getBikeId()+"");
+       holder.t3.setText(bk.getNoPlate());
 
-        View postView = inflater.inflate(android.R.layout.simple_list_item_1, parent, false);
+       new DownLoadImageAsync(holder.iv).execute("https://www.usmagazine.com/wp-content/uploads/2018/06/Smoothie-the-Cat-Instagram-zoom.jpg");
 
-        ViewHolder viewHolder = new ViewHolder(postView, this.mItemListener);
-        return viewHolder;
-    }
-
-    @Override
-    public void onBindViewHolder(BikeAdapter.ViewHolder holder, int position) {
-
-        Bike item = mItems.get(position);
-        TextView textView = holder.titleTv;
-        textView.setText(item.getName());
     }
 
     @Override
     public int getItemCount() {
-        return mItems.size();
+        return bikeList.size();
     }
 
-    public void updateBikes(List<Bike> items) {
-        mItems = items;
-        notifyDataSetChanged();
+    public static class MyViewHolder extends RecyclerView.ViewHolder {
+        public LinearLayout textView;
+        ImageView iv;
+        TextView t3;
+TextView t1;
+TextView t2;
+        public MyViewHolder(RelativeLayout v) {
+            super(v);
+            t1= v.findViewById(R.id.name);
+            t2= v.findViewById(R.id.brand);
+            iv= v.findViewById(R.id.image);
+
+            t3= v.findViewById(R.id.noplate);
+        }
     }
 
-    private Bike getItem(int adapterPosition) {
-        return mItems.get(adapterPosition);
-    }
+    // Create new views (invoked by the layout manager)
 
-    public interface PostItemListener {
-        void onPostClick(long id);
-    }
+
 }
 
 

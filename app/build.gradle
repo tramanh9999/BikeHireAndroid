@@ -28,10 +28,10 @@ dependencies {
 
     // Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.1.0'
-
+    //oath with google
+    implementation 'com.google.android.gms:play-services-auth:16.0.1'
 // JSON Parsing
     implementation 'com.google.code.gson:gson:2.6.1'
     implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
-
 // recyclerview
 }

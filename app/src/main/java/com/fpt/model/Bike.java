@@ -2,27 +2,34 @@ package com.fpt.model;
 
 
 import com.fpt.model.BikeSlot;
+import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 import java.util.List;
 
 public class Bike implements Serializable {
+
+    @SerializedName(value = "bikeId")
     int bikeId;
 
-
+    @SerializedName(value = "name")
     String name;
 
+    @SerializedName(value = "brand")
     String brand;
 
+    @SerializedName(value = "noPlate")
     String noPlate;
 
-    String capacity;
+    @SerializedName(value = "capacity")
 
+    String capacity;
+    @SerializedName(value = "ownerId")
     String ownerId;
+    @SerializedName(value = "cityId")
 
     String cityId;
-
-
+    @SerializedName(value = "slotList")
     List<BikeSlot> slotList;
 
     public int getBikeId() {

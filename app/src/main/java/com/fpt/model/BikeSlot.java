@@ -2,6 +2,8 @@ package com.fpt.model;
 
 
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Date;
 
 public class BikeSlot {
@@ -15,8 +17,9 @@ public class BikeSlot {
         this.slot_from = slot_from;
     }
 
-
+    @SerializedName("slot_from")
     Date slot_from;
+    @SerializedName("slot_to")
     Date slot_to;
 
     public BikeSlot() {

@@ -1,14 +1,8 @@
 package com.fpt.bkv2;
 
-import android.app.Activity;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapRegionDecoder;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -17,13 +11,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.fpt.model.Bike;
+import com.fpt.model.BikeSlot;
 
-import org.w3c.dom.Text;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 
@@ -40,7 +30,7 @@ public class BikeAdapter extends RecyclerView.Adapter<BikeAdapter.MyViewHolder> 
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        RelativeLayout v = (RelativeLayout) LayoutInflater.from(parent.getContext()).inflate(R.layout.bike_item_searched, parent, false);
+        View v = (View) LayoutInflater.from(parent.getContext()).inflate(R.layout.bike_item_searched, parent, false);
         MyViewHolder vh = new MyViewHolder(v);
         return vh;
     }
@@ -48,12 +38,27 @@ public class BikeAdapter extends RecyclerView.Adapter<BikeAdapter.MyViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
-        Bike bk=bikeList.get(position);
-        holder.t1.setText(bk.getName());
-       holder.t2.setText(bk.getBikeId()+"");
-       holder.t3.setText(bk.getNoPlate());
+        Bike bk = bikeList.get(position);
+        holder.location.setText("ID:"+bk.getBikeId());
 
-       new DownLoadImageAsync(holder.iv).execute("https://www.usmagazine.com/wp-content/uploads/2018/06/Smoothie-the-Cat-Instagram-zoom.jpg");
+        holder.txtname.setText("Name:"+bk.getName());
+//        holder.location.setText(bk.getLocation());
+        List<BikeSlot> list = bk.getSlotList();
+        int i = 0;
+        if (list != null) {
+            for (BikeSlot bs : list
+            ) {
+                holder.slotlist.setText((i++) + "." + bs.getSlot_from() + " - " + bs.getSlot_to());
+            }
+        }
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        String updstr = "";
+//        if (bk.getUpdateDate() != null) {
+//            updstr = sdf.format(bk.getUpdateDate());
+//
+//        }
+//        holder.updateDate.setText(updstr);
 
     }
 
@@ -64,17 +69,18 @@ public class BikeAdapter extends RecyclerView.Adapter<BikeAdapter.MyViewHolder> 
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         public LinearLayout textView;
-        ImageView iv;
-        TextView t3;
-TextView t1;
-TextView t2;
-        public MyViewHolder(RelativeLayout v) {
-            super(v);
-            t1= v.findViewById(R.id.name);
-            t2= v.findViewById(R.id.brand);
-            iv= v.findViewById(R.id.image);
+        TextView txtname;
+        TextView location;
+        TextView slotlist;
+        TextView updateDate;
 
-            t3= v.findViewById(R.id.noplate);
+        public MyViewHolder(View v) {
+            super(v);
+            txtname = v.findViewById(R.id.name);
+            location = v.findViewById(R.id.location);
+            slotlist = v.findViewById(R.id.slotlist);
+            updateDate = v.findViewById(R.id.updatedate);
+
         }
     }
 

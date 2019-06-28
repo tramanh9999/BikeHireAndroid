@@ -5,6 +5,7 @@ import com.fpt.model.BikeSlot;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 public class Bike implements Serializable {
@@ -27,10 +28,33 @@ public class Bike implements Serializable {
     @SerializedName(value = "ownerId")
     String ownerId;
     @SerializedName(value = "cityId")
-
     String cityId;
-    @SerializedName(value = "slotList")
+
+    @SerializedName(value = "location")
+    String location;
+
+    @SerializedName(value = "updateDate")
+    Date updateDate;
+    @SerializedName(value = "slotlist")
+
     List<BikeSlot> slotList;
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public Date getUpdateDate() {
+        return updateDate;
+    }
+
+    public void setUpdateDate(Date updateDate) {
+        this.updateDate = updateDate;
+    }
+
 
     public int getBikeId() {
         return bikeId;

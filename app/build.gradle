@@ -16,6 +16,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
 }
 
 dependencies {
@@ -29,9 +33,20 @@ dependencies {
     // Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.1.0'
     //oath with google
-    implementation 'com.google.android.gms:play-services-auth:16.0.1'
+    implementation 'com.google.firebase:firebase-core:17.0.0'
+// https://mvnrepository.com/artifact/com.google.firebase/firebase-auth
+    implementation group: 'com.google.firebase', name: 'firebase-auth', version: '18.0.0'
+// https://mvnrepository.com/artifact/com.squareup.picasso/picasso
+    implementation group: 'com.squareup.picasso', name: 'picasso', version: '2.71828'
+// https://mvnrepository.com/artifact/com.google.android.gms/play-services-auth
+    implementation group: 'com.google.android.gms', name: 'play-services-auth', version: '17.0.0'
+
+
 // JSON Parsing
-    implementation 'com.google.code.gson:gson:2.6.1'
+    implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
 // recyclerview
 }
+
+
+apply plugin: 'com.google.gms.google-services'

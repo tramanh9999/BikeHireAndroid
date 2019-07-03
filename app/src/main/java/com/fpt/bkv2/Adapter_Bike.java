@@ -4,7 +4,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,10 +16,10 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 
-public class BikeAdapter extends RecyclerView.Adapter<BikeAdapter.MyViewHolder> {
+public class Adapter_Bike extends RecyclerView.Adapter<Adapter_Bike.MyViewHolder> {
     List<Bike> bikeList;
 
-    public BikeAdapter(List<Bike> bikeList) {
+    public Adapter_Bike(List<Bike> bikeList) {
         this.bikeList = bikeList;
     }
 
@@ -30,7 +29,7 @@ public class BikeAdapter extends RecyclerView.Adapter<BikeAdapter.MyViewHolder> 
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View v = (View) LayoutInflater.from(parent.getContext()).inflate(R.layout.bike_item_searched, parent, false);
+        View v = (View) LayoutInflater.from(parent.getContext()).inflate(R.layout.item_searched_bike, parent, false);
         MyViewHolder vh = new MyViewHolder(v);
         return vh;
     }
@@ -39,16 +38,16 @@ public class BikeAdapter extends RecyclerView.Adapter<BikeAdapter.MyViewHolder> 
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
         Bike bk = bikeList.get(position);
-        holder.location.setText("ID:"+bk.getBikeId());
-
-        holder.txtname.setText("Name:"+bk.getName());
+        holder.location.setText(R.string.location_init);
+        holder.txtname.setText(bk.getName());
 //        holder.location.setText(bk.getLocation());
-        List<BikeSlot> list = bk.getSlotList();
+        List<BikeSlot> list =  bk.getSlotList();
         int i = 0;
         if (list != null) {
             for (BikeSlot bs : list
             ) {
-                holder.slotlist.setText((i++) + "." + bs.getSlot_from() + " - " + bs.getSlot_to());
+
+                holder.slotlist.setText(""+(i++) + R.string.dot + bs.getSlot_from() + R.string.sub + bs.getSlot_to());
             }
         }
 

@@ -10,7 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-public class BottomNavFragment extends Fragment {
+public class Fragment_BottomNav extends Fragment {
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

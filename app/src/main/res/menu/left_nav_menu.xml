@@ -1,23 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
 
 
-    <group android:checkableBehavior="single">
+    >
+
+
+    <group android:checkableBehavior="single"
+
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        >
         <item
-            android:id="@+id/navItem3d"
-            android:icon="@drawable/ic_baseline_3d_rotation_24px"
-            android:title="@string/three" />
+            android:id="@+id/home"
+            android:icon="@drawable/ic_baseline_home_24px"
+            android:title="@string/home"
+           />
+
         <item
-            android:id="@+id/navItemacc"
-            android:icon="@drawable/ic_baseline_accessibility_24px"
-            android:title="@string/acc" />
+            android:id="@+id/account"
+            android:icon="@drawable/ic_baseline_person_24px"
+            android:title="@string/account" />
+
         <item
-            android:id="@+id/navItemmenu"
-            android:icon="@drawable/ic_baseline_menu_24px"
-            android:title="@string/menu" />
-        <item
-            android:id="@+id/navItemsearch"
-            android:icon="@drawable/ic_baseline_search_24px"
-            android:title="@string/search" />
+            android:id="@+id/garage"
+            android:icon="@drawable/ic_baseline_store_mall_directory_24px"
+            android:title="@string/garage" />
+        <!--<item-->
+            <!--android:id="@+id/balance"-->
+            <!--android:icon="@drawable/ic_baseline_account_balance_wallet_24px"-->
+            <!--android:title="@string/balance" />-->
+        <!--<item-->
+            <!--android:id="@+id/history"-->
+            <!--android:icon="@drawable/ic_baseline_history_24px"-->
+            <!--android:title="@string/history" />-->
     </group>
 </menu>

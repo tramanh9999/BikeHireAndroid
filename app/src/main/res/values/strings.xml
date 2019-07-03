@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">bkv2</string>
+    <string name="app_name">Hire a bike</string>
     <string name="shr_filter_title">Filter</string>
     <string name="shr_search_title">Search</string>
     <string name="hint_name">Name</string>
@@ -14,5 +14,15 @@
     <string name="search">Search</string>
     <string name="drawopen">Open</string>
     <string name="drawclose">Close</string>
+    <string name="location_init">Cách đây</string>
+    <string name="dot">.</string>
+    <string name="sub">-</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="history">History</string>
+    <string name="garage">Bike garage</string>
+    <string name="account">Account information</string>
+    <string name="balance">Balance</string>
+    <string name="home">Home</string>
+    <string name="google_login">Login with google</string>
 
 </resources>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="115dp"
+    android:layout_gravity="center"
+    android:layout_marginLeft="@dimen/cardview_margin_side"
+    android:layout_marginRight="@dimen/cardview_margin_side"
+    android:layout_marginBottom="@dimen/cardview_margin_bottom"
+    android:elevation="5dp"
+    android:orientation="vertical"
+    app:cardBackgroundColor="@color/bike_item_background"
+    app:cardCornerRadius="6dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="115dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/d226c96fbc64856889c813250a20761c_original"
+            android:contentDescription="@string/app_name" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_bg"
+            android:orientation="vertical"
+
+
+            >
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_bg"
+                android:text="Honda Airblade 2018"
+                android:textColor="@color/item_word"
+                android:textSize="13sp" />
+
+
+            <TextView
+                android:id="@+id/location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_bg"
+                android:text="Cách đây 2km"
+                android:textColor="@color/nav_word"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/slotlist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1: 7h30-10h - 3 hours - 120.000đ\n2: 12h30- 15h- 2.5 hours- 120.000đ\n3: 16h- 21h- 4 hours- 200.000đ"
+                android:textColor="@color/item_word"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/updatedate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Updated date: 25/06/19"
+                android:textColor="@color/item_word"
+                android:textSize="13sp"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
+
+

@@ -2,16 +2,15 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="192dp"
-        >
+    android:layout_height="192dp">
 
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/d226c96fbc64856889c813250a20761c_original"
         android:contentDescription="@string/app_name"
-        android:scaleType="fitXY"
-        android:src="@color/cardview_dark_background" />
+        android:scaleType="fitXY" />
 
     <TextView
         android:id="@+id/txtEmail"
@@ -20,9 +19,9 @@
 
         android:layout_marginStart="20dp"
         android:layout_marginBottom="20dp"
-
-        android:text="wd-bikehiring.herokuapp.com/bikehire"
+        android:text="Ashita Kimura"
         android:textColor="@android:color/white"
+        android:textSize="22dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

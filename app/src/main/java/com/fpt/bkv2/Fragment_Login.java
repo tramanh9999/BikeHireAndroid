@@ -1,7 +1,6 @@
 package com.fpt.bkv2;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.view.KeyEvent;
@@ -19,7 +18,7 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
-class LoginFragment extends Fragment{
+class Fragment_Login extends Fragment{
 
 
     @Override
@@ -36,7 +35,7 @@ class LoginFragment extends Fragment{
 
 
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.login_fragment, container, false);
+        View view = inflater.inflate(R.layout.fragment_login, container, false);
         final TextInputLayout txtname = view.findViewById(R.id.pass_text_input);
         final TextInputEditText editpass = view.findViewById(R.id.editpass);
         nextBt = view.findViewById(R.id.next_button);

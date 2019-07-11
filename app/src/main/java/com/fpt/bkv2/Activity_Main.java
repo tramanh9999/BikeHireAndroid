@@ -4,7 +4,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.LinearGradient;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,6 +13,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.fpt.retrofit.APIUtil;
+import com.fpt.service.AccountService;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -24,7 +25,6 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-import com.squareup.picasso.Picasso;
 
 public class Activity_Main extends AppCompatActivity {
 
@@ -37,6 +37,9 @@ public class Activity_Main extends AppCompatActivity {
     GoogleSignInClient mGoogleSignInClient;
     private ImageView imageAccount;
 
+    AccountService accountService;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,22 +48,27 @@ public class Activity_Main extends AppCompatActivity {
         btn_login = findViewById(R.id.btnlogin);
         progressBar = findViewById(R.id.progressBar);
         imageAccount = findViewById(R.id.imageAccount);
+        //create account service
+        accountService = APIUtil.getAccountService();
 
-        mAuth = FirebaseAuth.getInstance();
-        GoogleSignInOptions googleSignInOptions =
-                new GoogleSignInOptions.Builder().requestIdToken(getString(R.string.default_web_client_id)).requestEmail().build();
-        mGoogleSignInClient = GoogleSignIn.getClient(this, googleSignInOptions);
-
-        btn_login.setOnClickListener(v -> signInGoogle());
+//        mAuth = FirebaseAuth.getInstance();
+//        GoogleSignInOptions googleSignInOptions =
+//                new GoogleSignInOptions.Builder().requestIdToken(getString(R.string.default_web_client_id)).requestEmail().build();
+//        mGoogleSignInClient = GoogleSignIn.getClient(this, googleSignInOptions);
+//
+//        btn_login.setOnClickListener(v -> signInGoogle());
 //        if (savedInstanceState == null) {
 ////            getSupportFragmentManager().beginTransaction().add(R.id.container, new Fragment_Login()).commit();
 //            startActivity(new Intent(this, Activity_Home.class));
 //        }
+        Intent it= new Intent(this, Activity_Home.class);
+        startActivity(it);
 
     }
 
     void signInGoogle() {
         progressBar.setVisibility(View.VISIBLE);
+        //create push up box show available google accounts
         Intent intent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(intent, GOOGLE_SIGN_IN);
 
@@ -85,19 +93,25 @@ public class Activity_Main extends AppCompatActivity {
 
     private void fireBaseAuthWithGoogle(GoogleSignInAccount account) {
         Log.d("TAG", "firebaseAuthWithGoogle: " + account.getId());
+        //get account token id from firebase
         AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
         mAuth.signInWithCredential(credential).addOnCompleteListener(this, task -> {
             if (task.isSuccessful()) {
                 progressBar.setVisibility(View.INVISIBLE);
                 Log.d("TAG", "Sign-in successfully");
                 FirebaseUser user = mAuth.getCurrentUser();
-                updateUI(user);
+
+//                if(accountService.getAccount(user.getEmail())== null){
+//                    account.
+//                };
+
+                enterApp(user);
 
             } else {
                 progressBar.setVisibility(View.INVISIBLE);
                 Log.d("TAG", "Sign-in failure", task.getException());
                 Toast.makeText(this, "Sign-in failed", Toast.LENGTH_LONG);
-                updateUI(null);
+                enterApp(null);
             }
 
 
@@ -105,10 +119,12 @@ public class Activity_Main extends AppCompatActivity {
 
     }
 
-    private void updateUI(FirebaseUser user) {
+
+    private void enterApp(FirebaseUser user) {
         if (user != null) {
-            Intent intent= new Intent(this, Activity_Home.class);
-            Bundle bundle= new Bundle();
+            Intent intent = new Intent(this, Activity_Home.class);
+            Bundle bundle = new Bundle();
+
             bundle.putString("username", user.getDisplayName());
             bundle.putString("email", user.getEmail());
             bundle.putString("photo", String.valueOf(user.getPhotoUrl()));

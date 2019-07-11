@@ -14,11 +14,17 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
-import com.fpt.data.APIUtil;
-import com.fpt.data.BikeService;
+import com.fpt.model.Account;
+import com.fpt.retrofit.APIUtil;
+import com.fpt.service.AccountService;
+import com.fpt.service.BikeService;
 import com.fpt.model.Bike;
+import com.fpt.sqllite.dao.AccountDAO;
+import com.fpt.sqllite.database.AppDatabase;
+import com.fpt.sqllite.database.AppDatabase_Impl;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
@@ -33,6 +39,7 @@ public class Activity_Home extends AppCompatActivity implements NavigationHost {
 
 
     BikeService bikeService = APIUtil.getBikeService();
+    AccountService accountService= APIUtil.getAccountService();
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
@@ -68,6 +75,23 @@ public class Activity_Home extends AppCompatActivity implements NavigationHost {
         initView();
         userInfo = getIntent().getBundleExtra("userInfo");
         load();
+        saveUser(userInfo);
+    }
+
+    AppDatabase appDatabase;
+
+    private void saveUser(Bundle userInfo) {
+        appDatabase = AppDatabase.getInMemoryDatabase(this.getBaseContext());
+        AccountDAO accountDAO = appDatabase.accountDAO();
+        Account account = new Account();
+        if(userInfo!=null){
+            account.setEmail(userInfo.get("email").toString());
+            accountDAO.insert(account);
+            accountService.insert(account);
+
+        }
+
+
     }
 
     @Override
@@ -84,6 +108,10 @@ public class Activity_Home extends AppCompatActivity implements NavigationHost {
         navigationView.setNavigationItemSelectedListener(new NavigationListener(this));
         navigationView.setCheckedItem(navigationPosition);
 
+    }
+
+    public void reload(View view) {
+        load();
     }
 
     class NavigationListener implements NavigationView.OnNavigationItemSelectedListener {
@@ -142,18 +170,17 @@ public class Activity_Home extends AppCompatActivity implements NavigationHost {
 
     public void load() {
 
-        Call<Bike[]> bikeCall = bikeService.getAmountBikes();
+        Call<Bike[]> bikeCall = bikeService.all();
         System.out.println(System.currentTimeMillis());
         //call api for bikes
         bikeCall.enqueue(new Callback<Bike[]>() {
             @Override
             public void onResponse(Call<Bike[]> call, Response<Bike[]> response) {
                 Bike[] arrayBikeList = response.body();
-//                mAdapter = new Adapter_Bike(arrayBikeList);
-//                recyclerView.setAdapter(mAdapter);
                 List<Bike> arrayList = Arrays.asList(arrayBikeList);
                 mAdapter = new Adapter_Bike(arrayList);
                 recyclerView.setAdapter(mAdapter);
+
             }
 
             @Override

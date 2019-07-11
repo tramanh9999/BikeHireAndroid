@@ -24,5 +24,6 @@
     <string name="balance">Balance</string>
     <string name="home">Home</string>
     <string name="google_login">Login with google</string>
+    <string name="title_activity_garage_map">Map</string>
 
 </resources>

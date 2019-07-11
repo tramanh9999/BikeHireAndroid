@@ -2,123 +2,68 @@ package com.fpt.model;
 
 
 import com.fpt.model.BikeSlot;
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Bike implements Serializable {
 
-    @SerializedName(value = "bikeId")
-    int bikeId;
-
-    @SerializedName(value = "name")
-    String name;
-
-    @SerializedName(value = "brand")
-    String brand;
-
-    @SerializedName(value = "noPlate")
-    String noPlate;
-
-    @SerializedName(value = "capacity")
-
-    String capacity;
-    @SerializedName(value = "ownerId")
-    String ownerId;
-    @SerializedName(value = "cityId")
-    String cityId;
-
-    @SerializedName(value = "location")
-    String location;
-
-    @SerializedName(value = "updateDate")
-    Date updateDate;
-    @SerializedName(value = "slotlist")
-
-    List<BikeSlot> slotList;
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public Date getUpdateDate() {
-        return updateDate;
-    }
-
-    public void setUpdateDate(Date updateDate) {
-        this.updateDate = updateDate;
-    }
+    @SerializedName("bikeId")
+    @Expose
+    private Integer bikeId;
+    @SerializedName("name")
+    @Expose
+    private String name;
+    @SerializedName("image")
+    @Expose
+    private String image;
+    @SerializedName("garage")
+    @Expose
+    private Garage garage;
+    @SerializedName("display_location")
+    @Expose
+    private String displayLocation;
+    @SerializedName("latitude")
+    @Expose
+    private Integer latitude;
+    @SerializedName("longitude")
+    @Expose
+    private Integer longitude;
+    @SerializedName("slotList")
+    @Expose
+    private List<BikeSlot> slotList;
+    @SerializedName("description")
+    @Expose
+    private String description;
+    @SerializedName("noPlate")
+    @Expose
+    private String noPlate;
+    @SerializedName("capacity")
+    @Expose
+    private String capacity;
+    @SerializedName("cityId")
+    @Expose
+    private String cityId;
 
 
-    public int getBikeId() {
-        return bikeId;
-    }
 
-    public void setBikeId(int bikeId) {
-        this.bikeId = bikeId;
-    }
 
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
-    public String getBrand() {
-        return brand;
-    }
 
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
 
-    public String getNoPlate() {
-        return noPlate;
-    }
-
-    public void setNoPlate(String noPlate) {
-        this.noPlate = noPlate;
-    }
-
-    public String getCapacity() {
-        return capacity;
-    }
-
-    public void setCapacity(String capacity) {
-        this.capacity = capacity;
-    }
-
-    public String getOwnerId() {
-        return ownerId;
-    }
-
-    public void setOwnerId(String ownerId) {
-        this.ownerId = ownerId;
-    }
-
-    public String getCityId() {
-        return cityId;
-    }
-
-    public void setCityId(String cityId) {
-        this.cityId = cityId;
-    }
-
-    public List getSlotList() {
-        return slotList;
-    }
-
-    public void setSlotList(List<BikeSlot> slotList) {
-        this.slotList = slotList;
-    }
 
 
 }

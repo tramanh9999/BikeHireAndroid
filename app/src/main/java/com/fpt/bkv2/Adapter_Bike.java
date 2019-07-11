@@ -3,6 +3,7 @@ package com.fpt.bkv2;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.fpt.model.Bike;
 import com.fpt.model.BikeSlot;
+import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -38,26 +40,21 @@ public class Adapter_Bike extends RecyclerView.Adapter<Adapter_Bike.MyViewHolder
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
         Bike bk = bikeList.get(position);
-        holder.location.setText(R.string.location_init);
+        holder.location.setText(bk.getDisplayLocation());
         holder.txtname.setText(bk.getName());
 //        holder.location.setText(bk.getLocation());
+        Picasso.get().load(bk.getImage()).into(holder.imageView);
+
+
         List<BikeSlot> list =  bk.getSlotList();
         int i = 0;
         if (list != null) {
             for (BikeSlot bs : list
             ) {
-
-                holder.slotlist.setText(""+(i++) + R.string.dot + bs.getSlot_from() + R.string.sub + bs.getSlot_to());
+                holder.slotlist.setText(""+(i++) + R.string.dot + bs.getS_from() + R.string.sub + bs.getS_to()+ R.string.sub +bs.getFee());
             }
         }
 
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        String updstr = "";
-//        if (bk.getUpdateDate() != null) {
-//            updstr = sdf.format(bk.getUpdateDate());
-//
-//        }
-//        holder.updateDate.setText(updstr);
 
     }
 
@@ -72,14 +69,14 @@ public class Adapter_Bike extends RecyclerView.Adapter<Adapter_Bike.MyViewHolder
         TextView location;
         TextView slotlist;
         TextView updateDate;
+        ImageView imageView;
 
         public MyViewHolder(View v) {
             super(v);
             txtname = v.findViewById(R.id.name);
             location = v.findViewById(R.id.location);
             slotlist = v.findViewById(R.id.slotlist);
-            updateDate = v.findViewById(R.id.updatedate);
-
+            imageView= v.findViewById(R.id.image);
         }
     }
 

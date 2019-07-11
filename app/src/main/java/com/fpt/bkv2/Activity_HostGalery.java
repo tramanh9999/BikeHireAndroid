@@ -8,8 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.fpt.data.APIUtil;
-import com.fpt.data.BikeService;
+import com.fpt.retrofit.APIUtil;
+import com.fpt.service.BikeService;
 import com.fpt.model.BaseResponse;
 import com.fpt.model.Bike;
 import com.fpt.model.BikeSlot;

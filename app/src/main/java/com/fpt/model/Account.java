@@ -1,10 +1,27 @@
 package com.fpt.model;
 
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Account {
+import java.util.Date;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity(tableName = "account")
+public class Account {
+    @PrimaryKey(autoGenerate = true)
+    int id;
     @SerializedName("email")
     @Expose
     private String email;
@@ -13,36 +30,16 @@ public class Account {
     private String phone;
     @SerializedName("balance")
     @Expose
-    private String balance;
-    @SerializedName("_links")
+    private long balance;
+    @SerializedName("avatar")
+    @Expose
+    String avatar;
+    @Ignore
+    @SerializedName("updateDate")
+    @Expose
+    Date updateDate;
 
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getBalance() {
-        return balance;
-    }
-
-    public void setBalance(String balance) {
-        this.balance = balance;
-    }
-
-
-
+    
 
 
 }

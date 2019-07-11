@@ -4,23 +4,23 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class BaseResponse implements Serializable {
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-    @SerializedName("inserted")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class   BaseResponse implements Serializable {
+
+    @SerializedName("updated")
     boolean msg;
 
 
-    public boolean isMsg() {
-        return msg;
-    }
 
-    public void setMsg(boolean msg) {
-        this.msg = msg;
-    }
 
-    public BaseResponse(boolean msg) {
-        this.msg = msg;
-    }
 
 
 }

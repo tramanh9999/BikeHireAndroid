@@ -43,7 +43,7 @@
             android:layout_marginBottom="@dimen/cardview_margin_bottom"
             android:background="@drawable/d226c96fbc64856889c813250a20761c_original"
             android:contentDescription="Has"
-            android:scaleType="centerCrop" />
+            android:scaleType="centerCrop" android:onClick="reload"/>
         <!--show bike list-->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycle_view"

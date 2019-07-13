@@ -3,7 +3,7 @@ package com.fpt.ViewModel;
 
 import java.util.Observable;
 
-public class ObjectViewModel implements ObjectViewModelContract.ViewModel {
+/*public class ObjectViewModel implements ObjectViewModelContract.ViewModel {
 
 
 
@@ -16,4 +16,4 @@ public class ObjectViewModel implements ObjectViewModelContract.ViewModel {
     public void destroy() {
 
     }
-}
+}*/

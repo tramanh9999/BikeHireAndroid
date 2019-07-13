@@ -39,7 +39,7 @@ class Fragment_Account extends Fragment {
         AccountDAO accountDAO = appDatabase.accountDAO();
         Account x = accountDAO.findByEmail(getActivity().getIntent().getBundleExtra("userInfo").getString("email"));
 
-        testDb.setText(x.getEmail());
+        /*testDb.setText(x.getEmail());*/
 
         return view;
     }

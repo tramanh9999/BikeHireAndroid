@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -31,11 +30,11 @@
 
         </androidx.appcompat.widget.Toolbar>
 
-<FrameLayout android:id="@+id/new_fragment"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"></FrameLayout>
+        <FrameLayout android:id="@+id/new_fragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"></FrameLayout>
         <!--toolbar-->
-            <!--//adverstising-->
+        <!--//adverstising-->
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="match_parent"
@@ -44,27 +43,59 @@
             android:background="@drawable/d226c96fbc64856889c813250a20761c_original"
             android:contentDescription="Has"
             android:scaleType="centerCrop" android:onClick="reload"/>
-        <!--show bike list-->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycle_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <Button
-            android:id="@+id/angry_btn"
 
-            android:text="Add A New Bike"
-            android:textColor="#000000"
-            android:textSize="30sp"
-
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imgAvatar"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Account Email"
+            android:textSize="20dp"
+            android:textStyle="bold"/>
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/buttonshape"
-            android:shadowColor="#A8A8A8"
-            android:shadowDx="0"
-            android:shadowDy="0"
-            android:shadowRadius="5"
-            />
-        </LinearLayout>
+            android:id="@+id/edtAccEmail"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Phone"
+            android:textSize="20dp"
+            android:textStyle="bold"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edtPhone"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Balance"
+            android:textSize="20dp"
+            android:textStyle="bold"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edtBalance"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Update Date"
+            android:textSize="20dp"
+            android:textStyle="bold"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edtUpdateDate"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnUpdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Update Account Info"/>
+
+    </LinearLayout>
 
     <!--header and menu in xml file-->
     <com.google.android.material.navigation.NavigationView

@@ -34,7 +34,7 @@ class Fragment_Account extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_account, container, false);
-        testDb = view.findViewById(R.id.txtmail);
+        /*testDb = view.findViewById(R.id.txtmail);*/
         appDatabase= AppDatabase.getInMemoryDatabase(this.getContext());
         AccountDAO accountDAO = appDatabase.accountDAO();
         Account x = accountDAO.findByEmail(getActivity().getIntent().getBundleExtra("userInfo").getString("email"));

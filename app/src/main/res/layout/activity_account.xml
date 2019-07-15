@@ -95,6 +95,13 @@
             android:layout_height="wrap_content"
             android:text="Update Account Info"/>
 
+        <FrameLayout xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        tools:ignore="MergeRootFrame" />
+
     </LinearLayout>
 
     <!--header and menu in xml file-->
@@ -108,7 +115,8 @@
         app:headerLayout="@layout/fragment_left_header"
         app:itemIconTint="@color/toolbarIconColor"
         app:itemTextColor="@color/toolbarIconColor"
-        app:menu="@menu/left_nav_menu" />
+        app:menu="@menu/left_nav_menu"
+        />
 
 
 

@@ -85,7 +85,7 @@ public class Activity_Home extends AppCompatActivity implements NavigationHost {
         AccountDAO accountDAO = appDatabase.accountDAO();
         Account account = new Account();
         if(userInfo!=null){
-            account.setEmail(userInfo.get("email").toString());
+            //account.setEmail(userInfo.get("email").toString());
             accountDAO.insert(account);
             accountService.insert(account);
 
@@ -113,6 +113,8 @@ public class Activity_Home extends AppCompatActivity implements NavigationHost {
     public void reload(View view) {
         load();
     }
+
+
 
     class NavigationListener implements NavigationView.OnNavigationItemSelectedListener {
 

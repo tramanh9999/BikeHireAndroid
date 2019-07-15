@@ -32,6 +32,4 @@ public class BikeSlot {
     @Expose
     long fee;
     Bike bike;
-
-
 }

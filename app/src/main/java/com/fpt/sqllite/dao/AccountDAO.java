@@ -20,4 +20,6 @@ public interface AccountDAO {
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
     void update(Account account);
+
+
 }

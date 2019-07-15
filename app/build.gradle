@@ -30,16 +30,15 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation 'com.google.android.material:material:1.1.0-alpha07'
-    implementation 'androidx.appcompat:appcompat:1.0.0'
+    implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     // Retrofit
-    implementation 'com.squareup.retrofit2:retrofit:2.1.0'
     //oath with google
-    implementation 'com.google.firebase:firebase-core:17.0.0'
+    implementation 'com.google.firebase:firebase-core:17.0.1'
 // https://mvnrepository.com/artifact/com.google.firebase/firebase-auth
-    implementation group: 'com.google.firebase', name: 'firebase-auth', version: '18.0.0'
+    implementation group: 'com.google.firebase', name: 'firebase-auth', version: '18.1.0'
 // https://mvnrepository.com/artifact/com.squareup.picasso/picasso
     implementation group: 'com.squareup.picasso', name: 'picasso', version: '2.71828'
 // https://mvnrepository.com/artifact/com.google.android.gms/play-services-auth
@@ -47,6 +46,7 @@ dependencies {
 
 
 // JSON Parsing
+    implementation 'com.squareup.retrofit2:retrofit:2.1.0'
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
 // recyclerview
@@ -60,9 +60,9 @@ dependencies {
 
     //sqllite room
     // https://mvnrepository.com/artifact/android.arch.persistence.room/runtime
-    implementation group: 'android.arch.persistence.room', name: 'runtime', version: '1.1.1'
+    implementation group: 'androidx.room', name: 'room-runtime', version: '2.1.0'
     // https://mvnrepository.com/artifact/android.arch.persistence.room/compiler
-    annotationProcessor group: 'android.arch.persistence.room', name: 'compiler', version: '1.1.1'
+    annotationProcessor group: 'androidx.room', name: 'room-compiler', version: '2.1.0'
 
 
 }

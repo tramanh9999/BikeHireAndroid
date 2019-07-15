@@ -8,8 +8,8 @@ public class ObjectViewModel implements ObjectViewModelContract.ViewModel {
 
 
 
-    public Obs  objectId;
-    public ObservableField<String> objectId;
+//    public Obs  objectId;
+//    public ObservableField<String> objectId;
 
 
     @Override

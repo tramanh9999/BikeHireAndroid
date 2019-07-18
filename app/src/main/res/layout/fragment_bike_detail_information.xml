@@ -1,7 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:theme="@style/customfontstyle"
+        android:text="Infomation" />
+
+    <TextView
+        android:id="@+id/txt_bike_information"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Yamaha R1 ra đời lần đầu tiên vào năm 1998 và trở thành
+một trong những mẫu sportbike 1000cc thành công nhất của
+người Nhật" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Opening hours" />
+
+    <ListView
+        android:id="@+id/list_view_open_hours"
+        android:layout_width="wrap_content"
+        android:layout_height="55dp"
+        android:nestedScrollingEnabled="true"
+        tools:listitem="@layout/item_opening_hour">
+
+    </ListView>
+
+    <TableLayout
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TableRow android:layout_width="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_span="1"
+                android:text="Capacity" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2"
+                android:textColor="@color/red" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_span="1"
+                android:text="NoPlate" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="19A2-18928"
+                android:textColor="@color/red" />
+
+
+        </TableRow>
+
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_span="1"
+                android:text="Owner" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BShop Nguyễn chí thanh"
+                android:textColor="@color/blue" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_span="1"
+                android:text="Direction" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="8A Nguyễn chí thanh, Ba Đình, Hà Nội"
+                android:textColor="@color/blue" />
+
+
+        </TableRow>
+
+
+    </TableLayout>
+
+
 
 </LinearLayout>

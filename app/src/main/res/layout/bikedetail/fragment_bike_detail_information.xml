@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:layout_width="130dp"
+        android:layout_height="62dp"
+
+        android:text="Infomation" />
+
+    <TextView
+        android:id="@+id/txt_bike_information"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Yamaha R1 ra đời lần đầu tiên vào năm 1998 và trở thành
+một trong những mẫu sportbike 1000cc thành công nhất của
+người Nhật"/>
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Opening hours"/>
+    
+
+
+</LinearLayout>

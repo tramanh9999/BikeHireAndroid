@@ -6,6 +6,10 @@
     <color name="toolbarIconColor">#FFFFFF</color>
     <color name="loginPageBackgroundColor">#FFFFFF</color>
     <color name="productGridBackgroundColor">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="greendot">#00D223</color>
+    <color name="red">#E45031</color>
+    <color name="blue">#3185E4</color>a
 
 
 

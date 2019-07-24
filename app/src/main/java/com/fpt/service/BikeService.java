@@ -16,17 +16,12 @@ public interface BikeService {
 
     @GET("bikes/all/10")
     public Call<Bike[]> getAmountBikes();
-
-
     @GET("bikes/all")
     public Call<Bike[]> all();
-
     @POST("bikes")
     Call<BaseResponse> insert(@Body Bike bk);
-
     @PUT("bikes")
     Call<BaseResponse> update (@Body Bike bk);
-
     @DELETE("bikes/{id}")
     Call<BaseResponse> delete(@Path("id") int id);
 

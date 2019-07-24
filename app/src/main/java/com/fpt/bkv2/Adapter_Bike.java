@@ -36,16 +36,17 @@ public class Adapter_Bike extends RecyclerView.Adapter<Adapter_Bike.MyViewHolder
         return vh;
     }
 
+
+
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-
         Bike bk = bikeList.get(position);
         holder.location.setText(bk.getDisplayLocation());
         holder.txtname.setText(bk.getName());
 //        holder.location.setText(bk.getLocation());
-        Picasso.get().load(bk.getImage()).into(holder.imageView);
-
-
+        if(bk.getImage().size()!=0){
+            Picasso.get().load(String.valueOf(bk.getImage().get(0).getUrl())).into(holder.imageView);
+        }
         List<BikeSlot> list =  bk.getSlotList();
         int i = 0;
         if (list != null) {
@@ -63,12 +64,11 @@ public class Adapter_Bike extends RecyclerView.Adapter<Adapter_Bike.MyViewHolder
         return bikeList.size();
     }
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder {
+    public static class MyViewHolder extends RecyclerView.ViewHolder{
         public LinearLayout textView;
         TextView txtname;
         TextView location;
         TextView slotlist;
-        TextView updateDate;
         ImageView imageView;
 
         public MyViewHolder(View v) {

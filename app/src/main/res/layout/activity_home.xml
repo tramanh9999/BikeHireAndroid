@@ -6,13 +6,17 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/main_background"
+    android:background="@color/white"
     android:orientation="vertical"
     tools:context=".Activity_Home"
     >
 
     <!--content in drawerlayout-->
-    <LinearLayout
+
+
+
+
+    <LinearLayout android:id="@+id/fragment_home"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -21,7 +25,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/main_background"
+            android:background="@color/white"
             android:minHeight="?attr/actionBarSize"
             app:contentInsetEnd="0dp"
             app:contentInsetStart="0dp"
@@ -31,9 +35,10 @@
 
         </androidx.appcompat.widget.Toolbar>
 
-<FrameLayout android:id="@+id/new_fragment"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"></FrameLayout>
+
+<!--<FrameLayout android:id="@+id/new_fragment"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"></FrameLayout>-->
         <!--toolbar-->
             <!--//adverstising-->
         <ImageView
@@ -41,7 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="163dp"
             android:layout_marginBottom="@dimen/cardview_margin_bottom"
-            android:background="@drawable/d226c96fbc64856889c813250a20761c_original"
+            android:background="@drawable/station"
             android:contentDescription="Has"
             android:scaleType="centerCrop" android:onClick="reload"/>
         <!--show bike list-->
@@ -49,22 +54,8 @@
             android:id="@+id/recycle_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-        <Button
-            android:id="@+id/angry_btn"
+    </LinearLayout>
 
-            android:text="Add A New Bike"
-            android:textColor="#000000"
-            android:textSize="30sp"
-
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/buttonshape"
-            android:shadowColor="#A8A8A8"
-            android:shadowDx="0"
-            android:shadowDy="0"
-            android:shadowRadius="5"
-            />
-        </LinearLayout>
 
     <!--header and menu in xml file-->
     <com.google.android.material.navigation.NavigationView

@@ -12,27 +12,24 @@
     android:elevation="5dp"
     android:orientation="vertical"
     app:cardBackgroundColor="@color/bike_item_background"
-    app:cardCornerRadius="6dp"
+    app:cardCornerRadius="12dp"
     android:theme="@style/Widget.MaterialComponents.CardView">
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
         <ImageView
+
             android:id="@+id/image"
             android:layout_width="115dp"
             android:layout_height="match_parent"
-            android:contentDescription="@string/app_name" />
-
+            android:contentDescription="@string/app_name"
+            android:scaleType="centerCrop"
+            android:src="@drawable/station"/>
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="226dp"
             android:layout_height="match_parent"
             android:background="@drawable/rounded_bg"
             android:orientation="vertical"
-
-
             >
 
             <TextView
@@ -50,25 +47,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_bg"
-                android:text="Chưa xác định"
-                android:textColor="@color/nav_word"
-                android:textSize="13sp" />
+                android:textColor="@color/red"
+                android:textSize="13sp"
+                android:text="@string/logout"/>
 
             <TextView
                 android:id="@+id/slotlist"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Chưa xác định"
                 android:textColor="@color/item_word"
                 android:textSize="13sp" />
 
-            <TextView
-                android:id="@+id/updatedate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textColor="@color/item_word"
-                android:textSize="13sp" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
     </LinearLayout>

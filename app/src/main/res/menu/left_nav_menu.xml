@@ -24,10 +24,10 @@
             android:id="@+id/garage"
             android:icon="@drawable/ic_baseline_store_mall_directory_24px"
             android:title="@string/garage" />
-        <!--<item-->
-            <!--android:id="@+id/balance"-->
-            <!--android:icon="@drawable/ic_baseline_account_balance_wallet_24px"-->
-            <!--android:title="@string/balance" />-->
+        <item
+            android:id="@+id/logout"
+            android:icon="@drawable/googleg_disabled_color_18"
+            android:title="@string/logout" />
         <!--<item-->
             <!--android:id="@+id/history"-->
             <!--android:icon="@drawable/ic_baseline_history_24px"-->

@@ -22,6 +22,7 @@
     <string name="garage">Bike garage</string>
     <string name="account">Account information</string>
     <string name="balance">Balance</string>
+    <string name="logout">Log out</string>
     <string name="home">Home</string>
     <string name="google_login">Login with google</string>
     <string name="signout">Sign out</string>
@@ -31,5 +32,11 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_garage_maps">Map</string>
+    <string name="addgara_suggest">You dont have any garage, click the button bellow to create one!</string>
+    <string name="addgara_button">Create garage</string>
+    <string name="default_balance">1000000</string>
+    <string name="create_garage_sucessful">Create garage successfully</string>
+    <string name="default_info_title">Default info title</string>
+    <string name="default_info_snippet">Default info snip</string>
 
 </resources>

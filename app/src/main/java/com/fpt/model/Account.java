@@ -7,6 +7,7 @@ import androidx.room.PrimaryKey;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import lombok.AllArgsConstructor;
@@ -19,27 +20,38 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity(tableName = "account")
-public class Account {
+public class Account implements Serializable {
+    @SerializedName("id")
     @PrimaryKey(autoGenerate = true)
     int id;
+    /*  "avatar": "string",
+  "balance": 0,
+  "email": "string",
+  "garage": null,
+  "id": 0,
+  "phone": "string",
+  "username": "string"*/
     @SerializedName("email")
     @Expose
     private String email;
+    @SerializedName("username")
+    @Expose
+    private String username;
     @SerializedName("phone")
     @Expose
     private String phone;
+
     @SerializedName("balance")
     @Expose
     private long balance;
+
     @SerializedName("avatar")
     @Expose
     String avatar;
-    @Ignore
-    @SerializedName("updateDate")
-    @Expose
-    Date updateDate;
 
-    
+    @SerializedName("garage")
+    @Expose
+    String garage;
 
 
 }

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".AddGarageFragment">
+    tools:context=".Fragment_Garage">
 
     <TextView
         android:layout_width="match_parent"
@@ -14,6 +14,13 @@
         android:gravity="center"
         android:textStyle="bold"
         />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnGarageImg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Garage Image" />
+
     <TextView
         android:paddingTop="20dp"
         android:layout_width="wrap_content"
@@ -22,7 +29,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/edtGaragaName"
+        android:id="@+id/edtGarageName"
         android:hint="Garage name"/>
     <TextView
         android:layout_width="wrap_content"
@@ -53,16 +60,21 @@
         android:layout_height="wrap_content"
         android:id="@+id/edtLocation"
         android:hint="Garage Location"/>
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnGarageImg"
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Balance" />
+    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add Garage Image"/>
+        android:id="@+id/edtGaragaBalance"
+        android:inputType="number"
+        android:text="@string/default_balance"
+        android:hint="Garage Balance"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnAddGarage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add new Garage"/>
+        android:text="Add new Garage" android:onClick="createGarage"/>
 </LinearLayout>

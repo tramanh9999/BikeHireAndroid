@@ -5,11 +5,7 @@
     android:orientation="vertical">
 
 
-    <Button
-        android:id="@+id/btinsert2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="insertBike" />
+
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/txtbid2"

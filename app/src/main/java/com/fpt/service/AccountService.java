@@ -2,6 +2,7 @@ package com.fpt.service;
 
 import com.fpt.model.Account;
 import com.fpt.model.Bike;
+import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 
 import java.util.List;
 
@@ -15,16 +16,16 @@ public interface AccountService {
 
     @GET("/accounts")
     Call<List<Account>> getAccounts();
-
-
-    @POST("/accounts")
-    Call<Account> getAccount(@Body String email);
-
-    @POST("/accounts")
+    @GET(value = "accounts")
+    Call<Account> getAccountByEmail( @Query(value = "email") String email);
+    @POST("accounts")
     Call<Account> insert(@Body Account account);
-
-    @POST("/accounts")
+    @POST("accounts")
     Call<List<Account>> getAccounts(@Body Bike bike);
+
+
+
+
 
 
 

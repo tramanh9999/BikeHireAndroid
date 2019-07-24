@@ -30,14 +30,17 @@ public class Garage {
     private String description;
     @SerializedName("latitude")
     @Expose
-    private Integer latitude;
+    private long latitude;
     @SerializedName("longitude")
     @Expose
-    private Integer longitude;
+    private long longitude;
     @SerializedName("display_location")
     @Expose
     private String displayLocation;
     @SerializedName("balance")
     @Expose
-    private Integer balance;
+    private long balance;
+
+
+
 }

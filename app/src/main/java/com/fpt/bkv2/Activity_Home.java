@@ -6,11 +6,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
+import android.app.PendingIntent;
+import android.app.TaskStackBuilder;
+import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -26,6 +31,7 @@ import com.fpt.sqllite.dao.AccountDAO;
 import com.fpt.sqllite.database.AppDatabase;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -39,7 +45,7 @@ public class Activity_Home extends AppCompatActivity implements NavigationHost {
 
 
     BikeService bikeService = APIUtil.getBikeService();
-    AccountService accountService= APIUtil.getAccountService();
+    AccountService accountService = APIUtil.getAccountService();
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
@@ -51,15 +57,16 @@ public class Activity_Home extends AppCompatActivity implements NavigationHost {
 
     TextView username;
     TextView email;
-    Bundle userInfo;
+    Account account;
+
+
+    Bundle accountInfoBundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_home);
-
         recyclerView = findViewById(R.id.recycle_view);
         recyclerView.setHasFixedSize(true);
         // use a linear layout manager
@@ -73,51 +80,47 @@ public class Activity_Home extends AppCompatActivity implements NavigationHost {
         toolbar = findViewById(R.id.toolbar);
         drawerLayout = findViewById(R.id.drawer_layout);
         initView();
-        userInfo = getIntent().getBundleExtra("userInfo");
+        accountInfoBundle = getIntent().getBundleExtra("accountBundle");
+        account = (Account) accountInfoBundle.getSerializable("account");
         load();
-        saveUser(userInfo);
+//        saveUser(userInfo);
+        fragmentManager = getSupportFragmentManager();
+        fragmentTransaction = fragmentManager.beginTransaction();
     }
 
-    AppDatabase appDatabase;
-
-    private void saveUser(Bundle userInfo) {
-        appDatabase = AppDatabase.getInMemoryDatabase(this.getBaseContext());
-        AccountDAO accountDAO = appDatabase.accountDAO();
-        Account account = new Account();
-        if(userInfo!=null){
-            //account.setEmail(userInfo.get("email").toString());
-            accountDAO.insert(account);
-            accountService.insert(account);
-
-        }
+    FragmentManager fragmentManager;
+    FragmentTransaction fragmentTransaction;
 
 
-    }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-
-    }
+//    AppDatabase appDatabase;
+//
+//    private void saveUser(Bundle userInfo) {
+//        appDatabase = AppDatabase.getInMemoryDatabase(this.getBaseContext());
+//        AccountDAO accountDAO = appDatabase.accountDAO();
+//        Account account = new Account();
+//        if(userInfo!=null){
+//            //account.setEmail(userInfo.get("email").toString());
+//            accountDAO.insert(account);
+//            accountService.insert(account);
+//
+//        }
+//   }
+//
+//
 
     private void initView() {
-//        setSupportActionBar(toolbar);
         setUpDrawLayout();
         toolbar.setTitle(R.string.home);
         navigationView.setNavigationItemSelectedListener(new NavigationListener(this));
         navigationView.setCheckedItem(navigationPosition);
-
     }
 
     public void reload(View view) {
         load();
     }
 
-
-
     class NavigationListener implements NavigationView.OnNavigationItemSelectedListener {
-
         Activity acc;
 
         public NavigationListener(Activity activity) {
@@ -129,25 +132,34 @@ public class Activity_Home extends AppCompatActivity implements NavigationHost {
             if (item.getItemId() == R.id.home) {
                 navigationView.setCheckedItem(R.id.home);
                 toolbar.setTitle(getString(R.string.home));
-                startActivity(new Intent(acc, Activity_Home.class));
+                startActivity(getIntent());
             }
             if (item.getItemId() == R.id.account) {
                 toolbar.setTitle(getString(R.string.account));
                 navigationView.setCheckedItem(R.id.account);
-                ((NavigationHost) acc).navigateTo(new Fragment_Account(), true);
-
+                fragmentTransaction.replace(R.id.fragment_home, new Fragment_Account());
             }
             if (item.getItemId() == R.id.garage) {
                 toolbar.setTitle(getString(R.string.garage));
                 navigationView.setCheckedItem(R.id.garage);
-                ((NavigationHost) acc).navigateTo(new Fragment_Garage(), true);
+                fragmentTransaction.replace(R.id.fragment_home, new Fragment_Garage());
+            }
+            fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+            fragmentTransaction.commit();
 
+            //create new activity
+            if (item.getItemId() == R.id.logout) {
+                signout();
+                startActivity(new Intent(acc.getBaseContext(), Activity_Main.class));
             }
             item.setChecked(true);
             drawerLayout.closeDrawers();
             return true;
         }
+    }
 
+    private void signout() {
+        FirebaseAuth.getInstance().signOut();
     }
 
     //connect drawlayout with toolbar
@@ -156,7 +168,8 @@ public class Activity_Home extends AppCompatActivity implements NavigationHost {
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
     }
-//
+
+    //
 //    @Override
 //    public boolean onCreateOptionsMenu(Menu menu) {
 //        getMenuInflater().inflate(R.menu.top_app_bar, menu);
@@ -164,14 +177,13 @@ public class Activity_Home extends AppCompatActivity implements NavigationHost {
 //
 //    }
 //
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        load();
-//    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        load();
+    }
 
     public void load() {
-
         Call<Bike[]> bikeCall = bikeService.all();
         System.out.println(System.currentTimeMillis());
         //call api for bikes
@@ -182,7 +194,6 @@ public class Activity_Home extends AppCompatActivity implements NavigationHost {
                 List<Bike> arrayList = Arrays.asList(arrayBikeList);
                 mAdapter = new Adapter_Bike(arrayList);
                 recyclerView.setAdapter(mAdapter);
-
             }
 
             @Override
@@ -190,7 +201,6 @@ public class Activity_Home extends AppCompatActivity implements NavigationHost {
                 System.out.println("Network failed");
             }
         });
-
     }
 
     @Override

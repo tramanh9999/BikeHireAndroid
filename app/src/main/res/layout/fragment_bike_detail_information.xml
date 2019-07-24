@@ -101,8 +101,6 @@ người Nhật" />
                 android:layout_height="wrap_content"
                 android:text="8A Nguyễn chí thanh, Ba Đình, Hà Nội"
                 android:textColor="@color/blue" />
-
-
         </TableRow>
 
 

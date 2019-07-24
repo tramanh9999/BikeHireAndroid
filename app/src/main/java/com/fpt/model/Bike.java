@@ -26,9 +26,9 @@ public class Bike implements Serializable {
     @SerializedName("name")
     @Expose
     private String name;
-    @SerializedName("image")
+    @SerializedName("imageList")
     @Expose
-    private String image;
+    private List<Image> image;
     @SerializedName("garage")
     @Expose
     private Garage garage;

@@ -13,6 +13,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.fpt.model.Account;
 import com.fpt.retrofit.APIUtil;
 import com.fpt.service.AccountService;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -25,6 +26,10 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Activity_Main extends AppCompatActivity {
 
@@ -50,26 +55,21 @@ public class Activity_Main extends AppCompatActivity {
         imageAccount = findViewById(R.id.imageAccount);
         //create account service
         accountService = APIUtil.getAccountService();
-
-//        mAuth = FirebaseAuth.getInstance();
-//        GoogleSignInOptions googleSignInOptions =
-//                new GoogleSignInOptions.Builder().requestIdToken(getString(R.string.default_web_client_id)).requestEmail().build();
-//        mGoogleSignInClient = GoogleSignIn.getClient(this, googleSignInOptions);
-//
-//        btn_login.setOnClickListener(v -> signInGoogle());
+        mAuth = FirebaseAuth.getInstance();
+        GoogleSignInOptions googleSignInOptions =
+                new GoogleSignInOptions.Builder().requestIdToken(getString(R.string.default_web_client_id)).requestEmail().build();
+        mGoogleSignInClient = GoogleSignIn.getClient(this, googleSignInOptions);
+        btn_login.setOnClickListener(v -> signInGoogle());
 //        if (savedInstanceState == null) {
-////            getSupportFragmentManager().beginTransaction().add(R.id.container, new Fragment_Login()).commit();
 //            startActivity(new Intent(this, Activity_Home.class));
 //        }
-        Intent it= new Intent(this, Activity_Home.class);
-        startActivity(it);
-
     }
 
     void signInGoogle() {
         progressBar.setVisibility(View.VISIBLE);
         //create push up box show available google accounts
         Intent intent = mGoogleSignInClient.getSignInIntent();
+
         startActivityForResult(intent, GOOGLE_SIGN_IN);
 
     }
@@ -91,6 +91,7 @@ public class Activity_Main extends AppCompatActivity {
         }
     }
 
+    //register account in firebase
     private void fireBaseAuthWithGoogle(GoogleSignInAccount account) {
         Log.d("TAG", "firebaseAuthWithGoogle: " + account.getId());
         //get account token id from firebase
@@ -101,10 +102,10 @@ public class Activity_Main extends AppCompatActivity {
                 Log.d("TAG", "Sign-in successfully");
                 FirebaseUser user = mAuth.getCurrentUser();
 
-//                if(accountService.getAccount(user.getEmail())== null){
+//                if(accountService.getAccountByEmail(user.getEmail())== null){
 //                    account.
 //                };
-
+//add new user in api db
                 enterApp(user);
 
             } else {
@@ -113,10 +114,7 @@ public class Activity_Main extends AppCompatActivity {
                 Toast.makeText(this, "Sign-in failed", Toast.LENGTH_LONG);
                 enterApp(null);
             }
-
-
         });
-
     }
 
 
@@ -125,12 +123,60 @@ public class Activity_Main extends AppCompatActivity {
             Intent intent = new Intent(this, Activity_Home.class);
             Bundle bundle = new Bundle();
 
-            bundle.putString("username", user.getDisplayName());
-            bundle.putString("email", user.getEmail());
-            bundle.putString("photo", String.valueOf(user.getPhotoUrl()));
-            intent.putExtra("userInfo", bundle);
-            startActivity(intent);
-        } else {
+            Account insertAccount = new Account();
+            insertAccount.setEmail(user.getEmail());
+            insertAccount.setUsername(user.getDisplayName());
+            insertAccount.setPhone(user.getPhoneNumber());
+            insertAccount.setAvatar(String.valueOf(user.getPhotoUrl()));
+            insertAccount.setBalance(1000000L);
+            insertAccount.setGarage(null);
+            insertAccount.setId(0);
+            AccountService accountService = APIUtil.getAccountService();
+            Call<Account> accountCall = accountService.getAccountByEmail(insertAccount.getEmail());
+            //get Account from server db
+            //if not exist then insert
+            // then take the new acount had been set init values into bundle
+            //else take the response to bundle and start HomeActivity
+            accountCall.enqueue(new Callback<Account>() {
+                @Override
+                public void onResponse(Call<Account> call, Response<Account> response) {
+
+
+                    Account responseAccount = response.body();
+                    if (responseAccount == null) {
+                       Call<Account> accountCall1= accountService.insert(insertAccount);
+                        accountCall1.enqueue(new Callback<Account>() {
+                            @Override
+                            public void onResponse(Call<Account> call, Response<Account> response) {
+//                                Toast.makeText(getApplicationContext(), "Register successfully!", Toast.LENGTH_LONG);
+                                if (response.code() == 201) {
+                                    bundle.putSerializable("user", insertAccount);
+                                    intent.putExtra("accountBundle", bundle);
+                                    startActivity(intent);
+                                }else{
+                                    System.out.println("Register failed::"+ response.message());
+                                }
+                            }
+                            @Override
+                            public void onFailure(Call<Account> call, Throwable t) {
+                                System.out.println("Register failed");
+                            }
+                        });
+                    } else {
+                        bundle.putSerializable("account", responseAccount);
+                        intent.putExtra("accountBundle", bundle);
+                        startActivity(intent);
+                    }
+
+
+                }
+
+                @Override
+                public void onFailure(Call<Account> call, Throwable t) {
+
+                }
+            });
+
 
         }
     }

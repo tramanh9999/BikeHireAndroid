@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".AddGarageActivity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/main_background"
+                android:minHeight="?attr/actionBarSize"
+                app:contentInsetEnd="0dp"
+                app:contentInsetStart="0dp"
+                app:menu="@menu/top_app_bar"
+                app:popupTheme="@style/Theme.MaterialComponents.DayNight"
+                app:theme="@style/ThemeOverlay.MaterialComponents.ActionBar">
+
+            </androidx.appcompat.widget.Toolbar>
+
+            <FrameLayout android:id="@+id/new_fragment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"></FrameLayout>
+            <!--toolbar-->
+            <!--//adverstising-->
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="163dp"
+                android:layout_marginBottom="@dimen/cardview_margin_bottom"
+                android:background="@drawable/d226c96fbc64856889c813250a20761c_original"
+                android:contentDescription="Has"
+                android:scaleType="centerCrop" />
+            <!--show bike list-->
+            <!--<androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycle_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/angry_btn"
+
+                android:text="Add A New Bike"
+                android:textColor="#000000"
+                android:textSize="30sp"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/buttonshape"
+                android:shadowColor="#A8A8A8"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="5"
+                />-->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Add New Garage"
+                android:textSize="30dp"
+                android:gravity="center"
+                android:textStyle="bold"
+                />
+            <TextView
+                android:paddingTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Garage name: " />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/edtGaragaName"
+                android:hint="Garage name"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Phone: " />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/edtGaragaPhone"
+                android:hint="Garage phone"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Description: " />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/edtDesc"
+                android:hint="Garage Description"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Location: " />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/edtLocation"
+                android:hint="Garage Location"/>
+
+            <ImageView
+                android:id="@+id/imgView"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnGarageImg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Add Garage Image"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnAddGarage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Add new Garage"/>
+        </LinearLayout>
+    </ScrollView>
+
+
+    <!--header and menu in xml file-->
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigationView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@color/main_background"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/fragment_left_header"
+        app:itemIconTint="@color/toolbarIconColor"
+        app:itemTextColor="@color/toolbarIconColor"
+        app:menu="@menu/left_nav_menu" />
+
+
+</LinearLayout>

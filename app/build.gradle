@@ -65,6 +65,7 @@ dependencies {
     // https://mvnrepository.com/artifact/android.arch.persistence.room/compiler
     annotationProcessor group: 'androidx.room', name: 'room-compiler', version: '2.1.0'
 
+    implementation 'com.karumi:dexter:5.0.0'
 
 }
 

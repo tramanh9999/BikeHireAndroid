@@ -3,8 +3,6 @@ package com.fpt.bkv2;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.content.Context;
@@ -15,7 +13,6 @@ import android.graphics.Bitmap;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
-import android.location.LocationListener;
 import android.location.LocationManager;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
@@ -30,7 +27,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.google.android.gms.location.FusedLocationProviderClient;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
@@ -47,36 +43,35 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
-public class AddGarageActivity extends AppCompatActivity {
+public class AddBikeActivity extends AppCompatActivity {
 
-    private ImageView imageview;
+    private ImageView imgBike;
     private static final String IMAGE_DIRECTORY = "/demonuts";
     private int GALLERY = 1, CAMERA = 2;
-    private Button btnImage;
-    private Button btnGetLocation;
-    private EditText edtLocation;
+    private Button btnBikeImage;
+    private Button btnGetBikeLocation;
+    private EditText edtBikeLocation;
     LocationManager locationManager;
     private static final long MINIMUM_DISTANCE_CHANGE_FOR_UPDATES = 1;
     private static final long MINIMUM_TIME_BETWEEN_UPDATES = 1000;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_garage);
+        setContentView(R.layout.activity_add_bike);
 
         requestMultiplePermissions();
-        edtLocation = findViewById(R.id.edtLocation);
-        btnGetLocation = (Button) findViewById(R.id.btnGetLocation);
-        btnImage = (Button) findViewById(R.id.btnGarageImg);
-        imageview = (ImageView) findViewById(R.id.imgView);
+        edtBikeLocation = findViewById(R.id.edtBikeLocation);
+        btnGetBikeLocation = (Button) findViewById(R.id.btnGetBikeLocation);
+        btnBikeImage = (Button) findViewById(R.id.btnBikeImg);
+        imgBike = (ImageView) findViewById(R.id.imgBike);
 
-        btnImage.setOnClickListener(new View.OnClickListener() {
+        btnBikeImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showPictureDialog();
             }
         });
-        btnGetLocation.setOnClickListener(new View.OnClickListener() {
+        btnGetBikeLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED){
@@ -86,10 +81,10 @@ public class AddGarageActivity extends AppCompatActivity {
                     Location location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
                     try {
                         String city = hereLocation(location.getLatitude(), location.getLongitude());
-                        edtLocation.setText(city);
+                        edtBikeLocation.setText(city);
                     } catch (Exception e){
                         e.printStackTrace();
-                        Toast.makeText(AddGarageActivity.this, "Not Found", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AddBikeActivity.this, "Not Found", Toast.LENGTH_SHORT).show();
                     }
 
                 }
@@ -107,10 +102,10 @@ public class AddGarageActivity extends AppCompatActivity {
                     Location location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
                     try {
                         String city = hereLocation(location.getLatitude(), location.getLongitude());
-                        edtLocation.setText(city);
+                        edtBikeLocation.setText(city);
                     } catch (Exception e){
                         e.printStackTrace();
-                        Toast.makeText(AddGarageActivity.this, "Not Found", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AddBikeActivity.this, "Not Found", Toast.LENGTH_SHORT).show();
                     }
 
                 } else {
@@ -191,20 +186,20 @@ public class AddGarageActivity extends AppCompatActivity {
                 try {
                     Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), contentURI);
                     String path = saveImage(bitmap);
-                    Toast.makeText(AddGarageActivity.this, "Image Saved!", Toast.LENGTH_SHORT).show();
-                    imageview.setImageBitmap(bitmap);
+                    Toast.makeText(AddBikeActivity.this, "Image Saved!", Toast.LENGTH_SHORT).show();
+                    imgBike.setImageBitmap(bitmap);
 
                 } catch (IOException e) {
                     e.printStackTrace();
-                    Toast.makeText(AddGarageActivity.this, "Failed!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddBikeActivity.this, "Failed!", Toast.LENGTH_SHORT).show();
                 }
             }
 
         } else if (requestCode == CAMERA) {
             Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
-            imageview.setImageBitmap(thumbnail);
+            imgBike.setImageBitmap(thumbnail);
             saveImage(thumbnail);
-            Toast.makeText(AddGarageActivity.this, "Image Saved!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(AddBikeActivity.this, "Image Saved!", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -264,6 +259,4 @@ public class AddGarageActivity extends AppCompatActivity {
                 .check();
 
     }
-
-
 }

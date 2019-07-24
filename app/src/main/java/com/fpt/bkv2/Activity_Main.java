@@ -61,7 +61,7 @@ public class Activity_Main extends AppCompatActivity {
 ////            getSupportFragmentManager().beginTransaction().add(R.id.container, new Fragment_Login()).commit();
 //            startActivity(new Intent(this, Activity_Home.class));
 //        }
-        Intent it= new Intent(this, Activity_Home.class);
+        Intent it= new Intent(this, AddBikeActivity.class);
         startActivity(it);
 
     }

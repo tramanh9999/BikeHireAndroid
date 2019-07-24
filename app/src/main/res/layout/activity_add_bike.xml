@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".AddGarageActivity">
+    tools:context=".AddBikeActivity">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -42,31 +42,12 @@
                 android:background="@drawable/d226c96fbc64856889c813250a20761c_original"
                 android:contentDescription="Has"
                 android:scaleType="centerCrop" />
-            <!--show bike list-->
-            <!--<androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycle_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <Button
-                android:id="@+id/angry_btn"
 
-                android:text="Add A New Bike"
-                android:textColor="#000000"
-                android:textSize="30sp"
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/buttonshape"
-                android:shadowColor="#A8A8A8"
-                android:shadowDx="0"
-                android:shadowDy="0"
-                android:shadowRadius="5"
-                />-->
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Add New Garage"
+                android:text="Add New Bike"
                 android:textSize="30dp"
                 android:gravity="center"
                 android:textStyle="bold"
@@ -75,21 +56,21 @@
                 android:paddingTop="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Garage name: " />
+                android:text="Bike name: " />
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/edtGaragaName"
-                android:hint="Garage name"/>
+                android:id="@+id/edtBikeName"
+                android:hint="Bike name"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Phone: " />
+                android:text="Bike NoPlate: " />
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/edtGaragaPhone"
-                android:hint="Garage phone"/>
+                android:id="@+id/edtBikeNoPlate"
+                android:hint="Bike NoPlate"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -98,43 +79,64 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/edtDesc"
-                android:hint="Garage Description"/>
+                android:id="@+id/edtBikeDesc"
+                android:hint="Bike Description"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Location: " />
+                android:text="Capacity: " />
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/edtLocation"
-                android:hint="Garage Location"
+                android:id="@+id/edtCapacity"
+                android:hint="Bike Capacity"/>
+
+            <!--<com.google.android.material.button.MaterialButton
+                android:id="@+id/btnGetLocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Get Location"/>-->
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/spnSlot"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bike Location: " />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/edtBikeLocation"
+                android:hint="Bike Location"
                 android:enabled="false"/>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnGetLocation"
+                android:id="@+id/btnGetBikeLocation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Get Location"/>
 
             <ImageView
-                android:id="@+id/imgView"
+                android:id="@+id/imgBike"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"/>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnGarageImg"
+                android:id="@+id/btnBikeImg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Add Garage Image"/>
+                android:text="Add Bike Image"/>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnAddGarage"
+                android:id="@+id/btnAddBike"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Add new Garage"/>
+                android:text="Add new Bike"/>
         </LinearLayout>
     </ScrollView>
 

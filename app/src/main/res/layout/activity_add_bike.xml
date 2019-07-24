@@ -97,11 +97,29 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Get Location"/>-->
-            <Spinner
+            <!--<Spinner
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/spnSlot"
-                />
+                />-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Number of hours: " />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/edtNumbOfHour"
+                android:hint="Number of Hours"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fee: " />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/edtFee"
+                android:hint="Bike's Fee"/>
 
             <TextView
                 android:layout_width="wrap_content"

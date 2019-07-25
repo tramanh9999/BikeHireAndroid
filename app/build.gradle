@@ -14,7 +14,9 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
         }
+
     }
     compileOptions {
         sourceCompatibility = '1.8'
@@ -58,7 +60,6 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok:1.18.8'
 
 
-    implementation 'com.google.android.gms:play-services-location:17.0.0'
     //sqllite room
     // https://mvnrepository.com/artifact/android.arch.persistence.room/runtime
     implementation group: 'androidx.room', name: 'room-runtime', version: '2.1.0'
@@ -66,7 +67,15 @@ dependencies {
     annotationProcessor group: 'androidx.room', name: 'room-compiler', version: '2.1.0'
 
     //place api
+    implementation 'com.google.android.gms:play-services-location:17.0.0'
+    implementation 'com.google.android.gms:play-services-places:17.0.0'
+    implementation 'com.github.bumptech.glide:glide:4.3.1'
+
+
+    // Places library
     implementation 'com.google.android.libraries.places:places:2.0.0'
+    // PING Place Picker
+    implementation 'com.github.rtchagas:pingplacepicker:1.1.0'
 
 
 }

@@ -7,11 +7,7 @@
     tools:context=".Fragment_Garage">
 
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Create garage"
-        />
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -40,7 +36,6 @@
             <TextView
                 android:layout_width="274dp"
                 android:layout_height="17dp"
-
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
@@ -67,6 +62,15 @@
 
 
         <!--show bike list-->
+
+
+<Button
+    android:id="@+id/btCreateBike"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Create bike"/>
+
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/host_bike_recycleview"
             android:layout_width="match_parent"

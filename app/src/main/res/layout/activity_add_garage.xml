@@ -109,14 +109,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/edtLocation"
-                android:hint="Garage Location"
-                android:enabled="false"/>
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnGetLocation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Get Location"/>
+                android:hint="Garage Location"/>
 
             <ImageView
                 android:id="@+id/imgView"

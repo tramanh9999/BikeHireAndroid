@@ -8,35 +8,6 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:704192846712:android:7203a9de230112a2",
-        "android_client_info": {
-          "package_name": "com.fpt.bikehire"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "704192846712-808lijh4osre0dl45d81tnf1eu9fot71.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyAgiymSu0XHw-vnmmAP1Y7SP1f-x8HF6Vc"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "704192846712-808lijh4osre0dl45d81tnf1eu9fot71.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
         "mobilesdk_app_id": "1:704192846712:android:dc7807276f1056ac",
         "android_client_info": {
           "package_name": "com.fpt.bkv2"
@@ -58,7 +29,7 @@
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAgiymSu0XHw-vnmmAP1Y7SP1f-x8HF6Vc"
+          "current_key": "AIzaSyBLjS9o5TQNqto_uCTk5wXhWI_Xg67H82U"
         }
       ],
       "services": {

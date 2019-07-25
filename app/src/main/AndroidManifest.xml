@@ -21,7 +21,6 @@
         android:theme="@style/AppTheme">
         <activity android:name=".Activity_BikeDetail"></activity>
         <activity android:name=".AddBikeActivity"></activity>
-        <activity android:name=".AddGarageActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").

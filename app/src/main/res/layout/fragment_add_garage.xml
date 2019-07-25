@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,11 +10,10 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add New Garage"
-        android:textSize="30dp"
         android:gravity="center"
-        android:textStyle="bold"
-        />
+        android:text="Create Garage"
+        android:textSize="30dp"
+        android:textStyle="bold" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnGarageImg"
@@ -21,60 +21,77 @@
         android:layout_height="wrap_content"
         android:text="Add Garage Image" />
 
+    <ImageView
+        android:id="@+id/imgView"
+        android:layout_width="match_parent"
+        android:layout_height="76dp"
+        tools:src="@tools:sample/backgrounds/scenic[7]" />
+
     <TextView
-        android:paddingTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingTop="20dp"
         android:text="Garage name: " />
+
     <EditText
+        android:id="@+id/edtGarageName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/edtGarageName"
-        android:hint="Garage name"/>
+        android:hint="Garage name" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Phone: " />
+
     <EditText
+        android:id="@+id/edtGaragaPhone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/edtGaragaPhone"
-        android:hint="Garage phone"/>
+        android:hint="Garage phone" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Description: " />
+
     <EditText
+        android:id="@+id/edtDesc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/edtDesc"
-        android:hint="Garage Description"/>
+        android:hint="Garage Description" />
+
+    <TextView
+        android:id="@+id/txtdisplayloc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Display location" />
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choose location"
+        android:id="@+id/chooseLocbt"
+
+
+        android:onClick="chooseLocation"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Location: " />
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/edtLocation"
-        android:hint="Garage Location"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="Balance" />
+
     <EditText
+        android:id="@+id/edtGaragaBalance"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/edtGaragaBalance"
+        android:hint="Garage Balance"
         android:inputType="number"
-        android:text="@string/default_balance"
-        android:hint="Garage Balance"/>
+        android:text="@string/default_balance" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnAddGarage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add new Garage" android:onClick="createGarage"/>
+        android:text="Add new Garage" />
 </LinearLayout>

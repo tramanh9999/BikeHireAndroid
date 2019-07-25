@@ -30,6 +30,6 @@ public class BikeSlot {
     Date s_to;
     @SerializedName("fee")
     @Expose
-    long fee;
+    double fee;
     Bike bike;
 }

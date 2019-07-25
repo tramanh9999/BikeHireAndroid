@@ -37,10 +37,10 @@ public class Bike implements Serializable {
     private String displayLocation;
     @SerializedName("latitude")
     @Expose
-    private Integer latitude;
+    private double latitude;
     @SerializedName("longitude")
     @Expose
-    private Integer longitude;
+    private double longitude;
     @SerializedName("slotList")
     @Expose
     private List<BikeSlot> slotList;

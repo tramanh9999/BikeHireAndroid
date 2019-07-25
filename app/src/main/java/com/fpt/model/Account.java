@@ -43,7 +43,7 @@ public class Account implements Serializable {
 
     @SerializedName("balance")
     @Expose
-    private long balance;
+    private double balance;
 
     @SerializedName("avatar")
     @Expose

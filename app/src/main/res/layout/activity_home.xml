@@ -8,53 +8,34 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical"
-    tools:context=".Activity_Home"
-    >
+    tools:context=".Activity_Home">
 
-    <!--content in drawerlayout-->
-
-
-
-
-    <LinearLayout android:id="@+id/fragment_home"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
+
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
+            android:background="#FFFFFF"
             android:minHeight="?attr/actionBarSize"
             app:contentInsetEnd="0dp"
             app:contentInsetStart="0dp"
             app:menu="@menu/top_app_bar"
             app:popupTheme="@style/Theme.MaterialComponents.DayNight"
-            app:theme="@style/ThemeOverlay.MaterialComponents.ActionBar">
+            app:theme="@style/ThemeOverlay.MaterialComponents.ActionBar" />
 
-        </androidx.appcompat.widget.Toolbar>
-
-
-<!--<FrameLayout android:id="@+id/new_fragment"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"></FrameLayout>-->
-        <!--toolbar-->
-            <!--//adverstising-->
-        <ImageView
-            android:id="@+id/imageView"
+        <FrameLayout
+            android:id="@+id/fragment_home"
             android:layout_width="match_parent"
-            android:layout_height="163dp"
-            android:layout_marginBottom="@dimen/cardview_margin_bottom"
-            android:background="@drawable/station"
-            android:contentDescription="Has"
-            android:scaleType="centerCrop" android:onClick="reload"/>
-        <!--show bike list-->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycle_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent"
+            android:orientation="vertical"/>
     </LinearLayout>
+
+
 
 
     <!--header and menu in xml file-->
@@ -69,7 +50,6 @@
         app:itemIconTint="@color/toolbarIconColor"
         app:itemTextColor="@color/toolbarIconColor"
         app:menu="@menu/left_nav_menu" />
-
 
 
 </androidx.drawerlayout.widget.DrawerLayout>

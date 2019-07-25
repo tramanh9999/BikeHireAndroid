@@ -1,6 +1,5 @@
 package com.fpt.bkv2;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,22 +10,18 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.fpt.model.Bike;
 import com.fpt.model.BikeSlot;
 import com.squareup.picasso.Picasso;
 
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 
-public class Adapter_Bike extends RecyclerView.Adapter<Adapter_Bike.MyViewHolder> {
+public class Adapter_GarageBike extends RecyclerView.Adapter<Adapter_GarageBike.MyViewHolder> {
     List<Bike> bikeList;
 
-    Context context;
-    public Adapter_Bike(List<Bike> bikeList, Context context) {
+    public Adapter_GarageBike(List<Bike> bikeList) {
         this.bikeList = bikeList;
-this.context=context;
     }
 
 
@@ -49,8 +44,7 @@ this.context=context;
         holder.txtname.setText(bk.getName());
 //        holder.location.setText(bk.getLocation());
         if(bk.getImage().size()!=0){
-            Glide.with(context).load(String.valueOf(bk.getImage().get(0).getUrl())).into(holder.imageView);
-//            Picasso.get().load(String.valueOf(bk.getImage().get(0).getUrl())).into(holder.imageView);
+            Picasso.get().load(String.valueOf(bk.getImage().get(0).getUrl())).into(holder.imageView);
         }
         List<BikeSlot> list =  bk.getSlotList();
         int i = 0;
